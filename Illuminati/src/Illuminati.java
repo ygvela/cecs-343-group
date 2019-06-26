@@ -9,7 +9,6 @@ public class Illuminati {
 		menu.display_start_menu();
 		int menu_num = check_input(1, 3);
 		if(menu_num == 1) {
-			System.out.print("\nStarting Game...");
 			System.out.print("\nEnter the number of players (2-8): ");
 			int num_players = check_input(2, 8);
 		}
