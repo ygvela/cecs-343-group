@@ -31,6 +31,9 @@ public class Illuminati {
 		while(menu_num != 3) {
 			display_start_menu();
 			menu_num = check_input(1,3);
+			if(menu_num == 1) {
+				System.out.print("\nStarting Game...");
+			}
 		}
 	}
 }
