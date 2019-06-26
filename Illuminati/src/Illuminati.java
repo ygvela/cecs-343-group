@@ -34,6 +34,9 @@ public class Illuminati {
 			if(menu_num == 1) {
 				System.out.print("\nStarting Game...");
 			}
+			if(menu_num == 2) {
+				System.out.print("\nViewing Rules...");
+			}
 		}
 	}
 }
