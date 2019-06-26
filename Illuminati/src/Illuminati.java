@@ -27,7 +27,7 @@ public class Illuminati {
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
 		int menu_num = 0;
-		System.out.print("Welcome to Illuminati\n");
+		System.out.print("Welcome to Illuminati: A Game of Conspiracy michell\n");
 		while(menu_num != 3) {
 			display_start_menu();
 			menu_num = check_input(1,3);
