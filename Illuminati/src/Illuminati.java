@@ -14,31 +14,47 @@ public class Illuminati {
 		if(menu_num == 2) {
 			System.out.print("\nViewing Rules...");
 		}
+		in.close();
 	}
 	
 	public static void start_game() {
+		Menu menu = new Menu();
 		System.out.print("\nEnter the number of players (2-8): ");
 		int num_players = check_input(2, 8);
-		take_action();
+		// CODE HERE: start turn
+		menu.display_pass_menu(); //might get put into seperate function
+		int pass_num = check_input(1, 2);
+		if(pass_num == 1) {
+			System.out.println("\nCollecting 5 MB...");
+		}
+		else if(pass_num == 2) {
+			take_action();
+		}
 	}
 	
 	public static void take_action() {
 		Menu menu = new Menu();
 		int action_count = 0;
-		while(action_count != 2) {
+		int action_num = 0;
+		while(action_num != 4) {
 			menu.display_actions_menu();
-			int action_num = check_input(1, 3);
+			action_num = check_input(1, 4);
 			if(action_num == 1) {
-				take_regular_action();
-				action_count++;
+				if(action_count == 2) {
+					System.out.println("You cannot take any more regular actions.");
+				}
+				else {
+					take_regular_action();
+					action_count++;
+				}
 			}
 			if(action_num == 2) {
 				take_free_action();
 			}
 			if(action_num == 3) {
-				System.out.println("Collecting 5 MB...");
+				System.out.println("\nTaking special power action...");
 			}
-		}
+		}	
 	}
 	
 	public static void take_regular_action() {

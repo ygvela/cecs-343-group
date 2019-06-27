@@ -9,11 +9,19 @@ public class Menu {
 				+ "\nEnter a number: ");
 	}
 	
+	public void display_pass_menu() {
+		System.out.print("\nWould you like to take a pass?"
+				+ "\n1. Yes"
+				+ "\n2. No"
+				+ "\nEnter a number: ");
+	}
+	
 	public void display_actions_menu() {
 		System.out.print("\nACTIONS"
 				+ "\n1. Take regular action"
 				+ "\n2. Take free action"
-				+ "\n3. Take a pass\n"
+				+ "\n3. Take special power action"
+				+ "\n4. Done\n"
 				+ "\nEnter a number: ");
 	}
 	
