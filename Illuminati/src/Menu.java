@@ -9,6 +9,14 @@ public class Menu {
 				+ "\nEnter a number: ");
 	}
 	
+	public void display_actions_menu() {
+		System.out.print("\nACTIONS"
+				+ "\n1. Take regular action"
+				+ "\n2. Take free action"
+				+ "\n3. Take a pass\n"
+				+ "\nEnter a number: ");
+	}
+	
 	public void display_reg_action_menu() {
 		System.out.print("\nREGULAR ACTIONS"
 				+ "\n1. Attack a group"
