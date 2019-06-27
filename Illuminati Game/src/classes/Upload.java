@@ -1,12 +1,12 @@
-package classes;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.text.SimpleDateFormat;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Iterator;
+import org.apache.poi.openxml4j.opc.Package;
 import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.DateUtil;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -18,6 +18,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  * @author Saket
  *
  */
+
 public class Upload {
 
     private File file;
@@ -28,13 +29,18 @@ public class Upload {
 
     public ArrayList<ArrayList<Object>> extractAsList(){
 
+        PrintStream oldErr = System.err;
+        PrintStream newErr = new PrintStream(new ByteArrayOutputStream());
+        System.setErr(newErr);
+
+
         ArrayList<ArrayList<Object>> list = new ArrayList<ArrayList<Object>>();
         int maxDataCount =0;
         try{
             FileInputStream file = new FileInputStream(this.file);
 
             // Create Workbook instance holding reference to .xlsx file
-            XSSFWorkbook workbook = new XSSFWorkbook(file);
+            XSSFWorkbook workbook = new XSSFWorkbook(Package.open(file));
 
             // Get first/desired sheet from the workbook
             XSSFSheet sheet = workbook.getSheetAt(0);
@@ -47,7 +53,6 @@ public class Upload {
 
                 //Skip the first row beacause it will be header
                 if (row.getRowNum() == 0) {
-
                     maxDataCount = row.getLastCellNum();
                     continue;
                 }
@@ -70,11 +75,7 @@ public class Upload {
                     switch (cell.getCellType()) {
 
                         case Cell.CELL_TYPE_NUMERIC:
-
-                            if(DateUtil.isCellDateFormatted(cell)){
-                                singleRows.add( new SimpleDateFormat("yyyy-MM-dd").format(cell.getDateCellValue()) );
-                            }else
-                                singleRows.add(cell.getNumericCellValue());
+                            singleRows.add(cell.getNumericCellValue());
                             break;
 
                         case Cell.CELL_TYPE_STRING:
@@ -90,9 +91,10 @@ public class Upload {
                 list.add(singleRows);
             }
             file.close();
-            workbook.close();
+            //workbook.close();
         } catch (Exception e) {  e.printStackTrace();}
 
+        System.setErr(oldErr);
         return list;
     }
 
