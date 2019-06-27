@@ -33,19 +33,19 @@ public class Illuminati {
 
     public static void start_game() {
 
-        File illuminati_cards = new File("src/Illuminati Cards.xlsx"); // Change the location and file name as per yours
+        File illuminati_cards = new File("Illuminati Cards.xlsx"); // Change the location and file name as per yours
         Upload extracted_illuminati = new Upload(illuminati_cards);
         ArrayList<ArrayList<Object>> illuminati_list = extracted_illuminati.extractAsList(); // Rows in excel will be returned as list
-        //System.out.print(list);
         System.out.println("\nShuffling illuminati cards");
         Collections.shuffle(illuminati_list);
+        //System.out.print(illuminati_list);
 
-        File group_cards = new File("src/Group Cards.xlsx"); // Change the location and file name as per yours
+        File group_cards = new File("Group Cards.xlsx"); // Change the location and file name as per yours
         Upload extracted_group = new Upload(group_cards);
         ArrayList<ArrayList<Object>> group_list = extracted_group.extractAsList(); // Rows in excel will be returned as list
-        //System.out.print(list);
-        System.out.println("Shuffling group cards");
+        System.out.println("\nShuffling group cards");
         Collections.shuffle(group_list);
+        //System.out.print(group_list);
 
         Menu menu = new Menu();
         System.out.print("\nEnter the number of players (2-8): ");
