@@ -1,3 +1,6 @@
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Illuminati {
@@ -13,6 +16,15 @@ public class Illuminati {
 		}
 		if(menu_num == 2) {
 			System.out.print("\nViewing Rules...");
+			if (Desktop.isDesktopSupported()) {
+			    try {
+			        File myFile = new File("Illuminati Game Rules.pdf");
+			        Desktop.getDesktop().open(myFile);
+			    } catch (IOException ex) {
+			        // no pdf found
+			    	System.out.println("Game Rules file not found.");
+			    }
+			}
 		}
 		in.close();
 	}
