@@ -13,6 +13,9 @@ public class Illuminati {
 			int num_players = check_input(2, 8);
 			menu.display_reg_action_menu();
 			int reg_action_num = check_input(1, 4);
+			menu.display_free_action_menu();
+			int free_action_num = check_input(1, 4);
+			
 		}
 		if(menu_num == 2) {
 			System.out.print("\nViewing Rules...");
