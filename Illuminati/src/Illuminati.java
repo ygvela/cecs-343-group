@@ -4,13 +4,15 @@ public class Illuminati {
 	
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
-		System.out.print("Welcome to Illuminati: A Game of Conspiracy\n");
+		System.out.print("WELCOME TO ILLUMINATI: A GAME OF CONSPIRACY\n");
 		Menu menu = new Menu();
 		menu.display_start_menu();
 		int menu_num = check_input(1, 3);
 		if(menu_num == 1) {
 			System.out.print("\nEnter the number of players (2-8): ");
 			int num_players = check_input(2, 8);
+			menu.display_reg_action_menu();
+			int reg_action_num = check_input(1, 4);
 		}
 		if(menu_num == 2) {
 			System.out.print("\nViewing Rules...");
