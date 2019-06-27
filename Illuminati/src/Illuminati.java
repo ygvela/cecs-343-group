@@ -6,15 +6,13 @@ import java.util.Scanner;
 public class Illuminati {
 	
 	public static void main(String[] args) {
-		Scanner in = new Scanner(System.in);
 		System.out.print("WELCOME TO ILLUMINATI: A GAME OF CONSPIRACY\n");
 		Menu menu = new Menu();
 		menu.display_start_menu();
 		int menu_num = check_input(1, 3);
 		if(menu_num == 1) {
 			start_game();
-		}
-		if(menu_num == 2) {
+		} else if(menu_num == 2) {
 			System.out.print("\nViewing Rules...");
 			if (Desktop.isDesktopSupported()) {
 			    try {
@@ -25,8 +23,10 @@ public class Illuminati {
 			    	System.out.println("Game Rules file not found.");
 			    }
 			}
+		} else { //if menu_num == 3
+			System.out.println("Exiting game...");
+			System.exit(0);
 		}
-		in.close();
 	}
 	
 	public static void start_game() {
