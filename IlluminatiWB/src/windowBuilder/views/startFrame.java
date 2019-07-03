@@ -2,6 +2,7 @@ package windowBuilder.views;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.SystemColor;
@@ -22,6 +23,8 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JComboBox;
 import javax.swing.UIManager;
 import java.awt.event.MouseMotionAdapter;
+import java.io.File;
+import java.io.IOException;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseAdapter;
 import javax.swing.border.CompoundBorder;
@@ -533,7 +536,16 @@ public class startFrame extends JFrame {
 		
 		btnRules.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				cl.show(cards, "ctpRules");
+				//cl.show(cards, "ctpRules");
+				if (Desktop.isDesktopSupported()) {
+	                try {
+	                    File myFile = new File("Illuminati Game Rules.pdf");
+	                    Desktop.getDesktop().open(myFile);
+	                } catch (IOException ex) {
+	                    // no pdf found
+	                    System.out.println("Game Rules file not found.");
+	                }
+	            }
 			}
 		});
 		btnRules.addMouseListener(new MouseAdapter() {
